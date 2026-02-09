@@ -2,7 +2,7 @@
   "90001": {
     "city": "LOS ANGELES",
     "state": "CA",
-    "senator": [ 
+    "senators": [ 
       {
         "name": "Alejandro Padilla",
         "email": "alejandro.padilla@example.com"
@@ -12,7 +12,7 @@
         "email": "andam.schiff@example.com"
       },
     ]
-    "representatives": [
+    "representative": [
       { 
         "name": "Robert Garcia",
         "email" "robert.garcia@example.com": 
