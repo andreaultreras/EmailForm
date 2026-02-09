@@ -10,14 +10,14 @@
       {
         "name": "Adam Schiff",
         "email": "andam.schiff@example.com"
-      },
+      }
     ],
     "representative": [
       { 
         "name": "Robert Garcia",
-        "email" "robert.garcia@example.com": 
-      },
-    ],
+        "email": "robert.garcia@example.com" 
+      }
+    ]
   },
   "90002": {
     "city": "LOS ANGELES",
