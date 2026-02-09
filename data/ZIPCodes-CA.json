@@ -1,7 +1,23 @@
 {
   "90001": {
     "city": "LOS ANGELES",
-    "state": "CA"
+    "state": "CA",
+    "senator": [ 
+      {
+        "name": "Alejandro Padilla",
+        "email": "alejandro.padilla@example.com"
+      },
+      {
+        "name": "Adam Schiff",
+        "email": "andam.schiff@example.com"
+      },
+    ]
+    "representatives": [
+      { 
+        "name": "Robert Garcia",
+        "email" "robert.garcia@example.com": 
+      },
+    ],
   },
   "90002": {
     "city": "LOS ANGELES",
