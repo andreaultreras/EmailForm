@@ -133,6 +133,9 @@ body {
   border: none;
   padding: 3px;
   background-color: transparent;
+  font-family: "Times New Roman", Times, serif;
+  color: #575656;
+  font-size: 1rem;
 }
 
 .emailForm input::placeholder {
@@ -157,6 +160,40 @@ body {
     background-color: #4970AD;
 }
 
+.emailText {
+  display: flex;
+  gap: 10px;
+}
+
+.emailText textarea {
+  width: 90%;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  font-family: "Times New Roman", Times, serif;
+  color: #575656;
+  font-size: 1rem;
+}
+
+.subjectText {
+  display: flex;
+  gap: 10px;
+}
+
+.subjectText textarea {
+  width: 90%;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  font-family: "Times New Roman", Times, serif;
+  color: #575656;
+  font-size: 1rem;
+}
+
+.subjectText textarea:focus {
+  outline: none;
+}
+
 .templateText {
   display: grid;
 }
@@ -169,12 +206,16 @@ body {
   border-radius: 5px;
   background-color: transparent;
   color: black;
-}
-
-.templateText textarea::placeholder {
+  overflow-y: scroll;
   font-family: "Times New Roman", Times, serif;
   color: #575656;
   font-size: 1rem;
+}
+
+.templateText textarea:focus {
+  outline: none;
+  border-color: rgba(0, 0, 128, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
 }
 
 .error {
@@ -190,10 +231,9 @@ body {
   color: red;
 }
 
-.auto-size {
-  box-sizing: content-box;
-  padding: 3px;
-  font: inherit;
-  max-width: 100%;
-  
+.notes {
+  margin-top: 5px;
+  color: #575656;
+  font-size: 0.6rem;
+  text-align: center;
 }
