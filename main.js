@@ -1,15 +1,19 @@
-// =================
+// ========================================================
 // DOM Elements
-// =================
+// ========================================================
 const zipInput = document.getElementById('zip');
 const nameInput = document.getElementById('name');
 const lookUpBtn = document.getElementById('lookUpBtn');
 const zipErrorDiv = document.getElementById('zipError');
 const nameErrorDiv = document.getElementById('nameError');
+const bodyInput = document.getElementById('bodyText');
+const ORIGINAL_BODY_TEMPLATE = bodyInput.value;
+let emailList = [];
+let nameList = [];
 
-// ==================
+// ========================================================
 // HELPERS
-// ==================
+// ========================================================
 function isValidZip(zip) {
   return /^\d{5}$/.test(zip);
 }
@@ -37,22 +41,32 @@ function showEmailForm() {
   emailForm.style.display = "block";
 }
 
-function autoSizeInput() {
-  const inputs = document.querySelectorAll('.auto-size');
+function buildDear(names) {
+  if (names.length === 0) return '';
+  if (names.length === 1) return names[0];
   
-  inputs.forEach(input => {
-    const textLength = input.placeholder.length;
-    input.style.width = `${textLength + 1}ch`
-  });
-}autoSizeInput();
+  let dearStr = ''
+    for (let i = 0; i < names.length-1; i++) {
+      dearStr += names[i] + ", ";
+    }
+  dearStr += "& " + names[names.length-1];
+  return dearStr;
+}
 
-// =================
-// EVENT HANDLER
-// =================
+function addToList(item) {
+  emailList.push(item.email);
+  nameList.push(item.name);
+}
+
+// ========================================================
+// SEARCH BUTTON
+// ========================================================
 lookUpBtn.addEventListener('click', async () => {
   clearError();
+  emailList.length = 0;
+  nameList.length = 0;
   
-//   VALIDATION====================
+//   Validation====================
   const zip = zipInput.value.trim();
   const name = nameInput.value.trim();
   
@@ -70,10 +84,10 @@ lookUpBtn.addEventListener('click', async () => {
   
   if(!isValid) return;
   
-// EVERYTHING PASSED==================
+// Everything passed, get json=====
   try {
     const response = await fetch(
-      'https://raw.githubusercontent.com/andreaultreras/EmailCampaign/main/ZIPCodes-CA.json'
+      'https://raw.githubusercontent.com/andreaultreras/EmailForm/main/data/ZIPCodes-CA.json'
     );
     
     if(!response.ok){
@@ -87,11 +101,46 @@ lookUpBtn.addEventListener('click', async () => {
       showZipError('ZIP code not found.')
       return;
     }
-    console.log(location.city, location.state);
+
+    // get a list of emails and names===
+    const senatorsList = location.senators;
+    const repsList = location.representative;
+    senatorsList.forEach(addToList);
+    repsList.forEach(addToList);
+    
+    const toEmail = document.getElementById('repEmails');
+    toEmail.value = emailList.join(', ');
+
+    // update the text in the template with names===
+    const userName = document.getElementById('name').value.trim();
+    let bodyTemplate = ORIGINAL_BODY_TEMPLATE;
+    let recipients = buildDear(nameList);
+    
+    if (userName) {
+      bodyTemplate = bodyTemplate.replace('[UserName]', userName)
+    }
+    bodyTemplate = bodyTemplate.replace('[XXXX]', recipients);
+    
+    const bodyInput = document.getElementById('bodyText');
+    bodyInput.value = bodyTemplate;
+
+    // show the email form================
     document.querySelector(".emailForm").hidden = false;
   }
   catch (error) {
     showZipError('Unable to load ZIP data. Please try again later.');
     console.error(error);
   }
-})
+});
+
+// ======================================================
+document.getElementById('sendEmailBtn').addEventListener('click', () => {
+  const toEmails = document.getElementById('repEmails').value;
+  
+  const subject = encodeURIComponent(document.getElementById('subjectInput').value.trim());
+  let bodyTemplate = document.getElementById('bodyText').value.trim();
+  const body = encodeURIComponent(bodyTemplate);
+  
+  const mailtoLink = `mailto:${toEmails}?subject=${subject}&body=${body}`;
+  window.location.href = mailtoLink;
+});
