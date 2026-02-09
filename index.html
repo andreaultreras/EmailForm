@@ -27,20 +27,37 @@
   
     <div class="emailForm" hidden>
       <h4>Your Email Template</h4>
-      <div>
+      <div class="emailText">
         <label>To:</label>
-        <input class="auto-size" type="email" placeholder="example@example.com" multiple readonly>
+        <textarea id="repEmails" rows=2 readonly></textarea>
       </div>
-      <div>
+      <div class="subjectText">
         <label>Subject:</label>
-        <input class="auto-size"
-               type="text" 
-              placeholder="Stop DHS Funding Until ICE and CBP Are Held Accountable" readonly>
+        <textarea id="subjectInput" rows=2 readonly>
+Stop DHS Funding Until ICE and CBP Are Held Accountable
+        </textarea>
       </div>
       <div class="templateText">
         <label>Template:</label>
-        <textarea placeholder="Type something here..." readonly></textarea>
+        <textarea id="bodyText">
+Dear [XXXX],
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec ligula a augue varius aliquet et a lectus. Curabitur enim dui, lacinia sit amet condimentum at, tincidunt eu mauris. Maecenas maximus mauris ligula, ac rhoncus odio rhoncus sit amet. Praesent nisi dui, lacinia vel bibendum nec, ornare sit amet nunc. Aliquam id mattis dui. Vivamus ac nibh finibus, consequat mi at, ornare neque. Phasellus ac neque eu sapien malesuada varius sed id quam. Mauris facilisis lacus vel ultrices sagittis. Etiam dapibus ante lectus, tempor porttitor purus maximus venenatis. Nulla non velit rhoncus, tincidunt libero a, tincidunt leo.
+
+Nunc feugiat venenatis lacus vel molestie. Vestibulum arcu dui, luctus eu ex sed, dictum sodales massa. Proin a erat aliquet, aliquet turpis tristique, tempor enim. Mauris tincidunt orci eget quam rhoncus, dapibus aliquet diam laoreet. Ut aliquet convallis tempor. Proin ut ornare arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec magna felis. Donec maximus sagittis malesuada.
+
+Quisque ex ante, gravida non iaculis vel, imperdiet vitae arcu. Nullam eget tellus quis neque pharetra consequat et a nisl. Etiam ac efficitur erat, sit amet interdum nisl. Nulla eu imperdiet ipsum, in efficitur orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla nec molestie nisi. Integer iaculis lacinia nisi, sed euismod nisi viverra vitae.
+
+Donec eget ante eleifend, lobortis lectus id, sagittis magna. Etiam sodales elementum est, in ullamcorper diam sagittis quis. Fusce nec quam non diam congue volutpat. Quisque euismod consectetur velit, sed vestibulum turpis sollicitudin ut. Pellentesque interdum orci eu lorem porttitor, eu rutrum magna rhoncus. Proin scelerisque felis nunc, ut dapibus justo scelerisque eget. Integer quis porttitor ex. In condimentum consequat sapien, in sagittis orci consequat in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam a diam vel mi accumsan auctor.
+
+Donec eu placerat lectus. Morbi nisl quam, interdum sit amet ipsum ornare, rhoncus ullamcorper mauris. Curabitur ultricies ante vel neque facilisis varius. Phasellus vehicula sagittis dapibus. Curabitur vel ex tincidunt, ultrices magna vel, pellentesque sapien. Integer pharetra, arcu et dictum porttitor, metus ex sollicitudin lacus, nec dapibus turpis justo id lacus. Etiam sit amet dapibus metus. Donec non finibus enim. Vivamus luctus enim et pellentesque maximus. Aliquam sit amet est dolor. Nulla mattis sapien sed commodo feugiat. Morbi consequat tincidunt efficitur. Fusce sit amet leo at odio dapibus aliquet non at sapien. Sed efficitur bibendum tellus. Sed lorem lectus, aliquam consequat tempor in, auctor iaculis libero. 
+                               
+Sincerely,
+[UserName] 
+        </textarea>
       </div>
-      <button>Send Email</button>
+      
+      <button id="sendEmailBtn">Send Email</button>
+      <p class="notes">or copy/paste into email</p>
     </div>
 </div>
