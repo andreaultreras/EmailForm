@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #DBEDB9;
+  background-color: #F0F5E9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,6 +258,10 @@ body {
   .header h4 {
     font-size: 1rem;
     text-align: center;
+  }
+ 
+  .userZip p {
+    margin-top: 5px;
   }
 
   /* Inputs should be full width */
