@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: beige;
+  background-color: #DBEDB9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,3 +237,79 @@ body {
   font-size: 0.6rem;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+
+  /* Page layout */
+  body {
+    align-items: flex-start;
+    margin: 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  /* Headings */
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .header h4 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Inputs should be full width */
+  .userName input,
+  .emailForm input,
+  .inputZip input {
+    width: 100%;
+  }
+
+  /* ZIP + button stack vertically */
+  .inputZip {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .inputZip button {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+  }
+
+  /* Email + subject rows stack */
+  .emailText,
+  .subjectText {
+    flex-direction: column;
+  }
+
+  .emailText textarea,
+  .subjectText textarea {
+    width: 100%;
+  }
+
+  /* Email body textarea */
+  .templateText textarea {
+    height: 260px;
+    font-size: 1rem;
+  }
+
+  /* Buttons easier to tap */
+  button {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  /* Error messages readable */
+  .error {
+    width: 100%;
+  }
+
+  /* Notes */
+  .notes {
+    font-size: 0.75rem;
+  }
+}
+
