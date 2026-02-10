@@ -54,7 +54,7 @@ body {
 .inputZip {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 8px;
+  row-gap: 8px;
 }
 
 #zip {
@@ -85,12 +85,6 @@ body {
   outline: none;
   border-color: rgba(0, 0, 128, 0.5);
   box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
-}
-
-.inputZip {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .inputZip button {
@@ -227,22 +221,6 @@ body {
     width: 60%;
   }
 
-  /* ZIP + button stack vertically */
-  .inputZip {
-    display: block;
-    align-items: center;
-  }
-  
-  .inputZip input {
-    width: 25%;
-  }
-
-  .inputZip button {
-    width: auto;
-    padding: 0 20px;
-    height: 39px;
-  }
-
   /* Email + subject rows stack */
   .emailText,
   .subjectText {
@@ -264,25 +242,28 @@ body {
   }
   
   .inputZip {
-    grid-template-columns: auto auto;
-    align-items: center;
+    grid-template-columns: max-content auto;
     column-gap: 12px;
+    row-gap: 8px;
   }
 
   #zip {
     grid-column: 1;
-    order: 1;
+    grid-row: 1;
+    width: 200px;
   }
-  
+
   #lookUpBtn {
     grid-column: 2;
-    order: 2;
-    height; 39px;
+    grid-row: 1;
+    height: 39px;
+    padding: 0 20px;
+    width: 25%;
   }
-  
+
   #zipError {
     grid-column: 1 / span 2;
-    order: 3;
+    grid-row: 2;
     width: 38%;
   }
 }
