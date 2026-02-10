@@ -87,7 +87,7 @@ lookUpBtn.addEventListener('click', async () => {
 // Everything passed, get json=====
   try {
     const response = await fetch(
-      'https://raw.githubusercontent.com/andreaultreras/EmailForm/main/data/ZIPCodes-CA.json'
+      './data/ZIPCodes-CA.json'
     );
     
     if(!response.ok){
