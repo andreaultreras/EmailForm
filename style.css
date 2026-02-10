@@ -6,9 +6,9 @@
 
 body {
   background-color: #F0F5E9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/*   display: flex; */
+/*   justify-content: center; */
+/*   align-items: center; */
   font-family: "Times New Roman", Times, serif;
   min-height: 100vh;
   margin: 30px;
@@ -21,81 +21,50 @@ body {
   border-radius: 2px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 800px;
+/*   max-width: 800px; */
 }
 
 .header h1 {
   color: navy;
-  padding: 10px;
+  padding: 10px 0;
   text-align: center;
   font-size: 2.2rem; 
 }
 
 .header h4 {
   color: rgba(0, 0, 128, 0.8);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
 .userInformation {
-/*   margin-bottom: 50px; */
   padding-bottom: 20px;
   border-bottom: 1px dashed gray;
   color: #575656;
 }
 
-.userName label {
-  color: #575656;
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.userName input {
-  width: 60%;
-  margin-bottom: 15px;
-  border: 1px solid #BDBBBA;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #F5F3F1;
-  color: black;
-}
-
+.userName label,
 .userZip label {
   color: #575656;
-  display: flex;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 8px;
 }
 
-.inputZip {
-  display: flex;
-  justify-content: left;
-  gap: 10px;
+.userZip p {
+  margin-top: 8px;
 }
 
-.inputZip input {
-  width: 25%;
+.userName input,
+.inputZip input,
+.emailForm input {
+  width: 100%;
   margin-bottom: 15px;
   border: 1px solid #BDBBBA;
   border-radius: 5px;
   padding: 10px;
   background-color: #F5F3F1;
   color: black;
-}
-
-.inputZip button {
-  background-color: #2F4870;
-  border: none;
-  padding: 0px 20px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  height: 39px;
-  font-weight: bold;
-}
-
-.inputZip button:hover {
-  background-color: #4970AD;
 }
 
 .userInformation input:focus {
@@ -104,9 +73,29 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
 }
 
+.inputZip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputZip button {
+  width: 100%;
+  background-color: #2F4870;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.inputZip button:hover {
+  background-color: #4970AD;
+}
+
 .emailForm {
   margin-top: 20px;
-  display: block;
 }
 
 .emailForm[hidden] {
@@ -115,99 +104,45 @@ body {
 
 .emailForm h4 {
   color: rgba(0, 0, 128, 0.8);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.emailForm label {
-  color: black;
-/*   display: flex; */
+.emailText,
+.subjectText,
+.templateText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 10px;
-  font-size: 1rem;
 }
 
-.emailForm input {
-  width: 60%;
-  margin-bottom: 15px;
-  border: none;
-  padding: 3px;
-  background-color: transparent;
-  font-family: "Times New Roman", Times, serif;
-  color: #575656;
-  font-size: 1rem;
-}
-
-.emailForm input::placeholder {
-  font-family: "Times New Roman", Times, serif;
-  color: #575656;
-  font-size: 1rem;
-}
-
-.emailForm button {
-  background-color: #2F4870;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  display: block;
-  margin: 20px auto 0;
-}
-
-.emailForm button:hover {
-    background-color: #4970AD;
-}
-
-.emailText {
-  display: flex;
-  gap: 10px;
-}
-
-.emailText textarea {
-  width: 90%;
-  resize: none;
-  border: none;
-  background-color: transparent;
-  font-family: "Times New Roman", Times, serif;
-  color: #575656;
-  font-size: 1rem;
-}
-
-.subjectText {
-  display: flex;
-  gap: 10px;
-}
-
+.emailText textarea,
 .subjectText textarea {
-  width: 90%;
+  width: 100%;
   resize: none;
   border: none;
   background-color: transparent;
-  font-family: "Times New Roman", Times, serif;
+  font-family: inherit;
   color: #575656;
   font-size: 1rem;
 }
 
+.emailText textarea:focus, 
 .subjectText textarea:focus {
   outline: none;
 }
 
-.templateText {
-  display: grid;
-}
-
 .templateText textarea {
-  height: 500px;
+  height: 260px;
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #BDBBBA;
   border-radius: 5px;
   background-color: transparent;
   color: black;
-  overflow-y: scroll;
-  font-family: "Times New Roman", Times, serif;
+  font-family: inherit;
   color: #575656;
   font-size: 1rem;
 }
@@ -218,13 +153,28 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 128, 0.2);
 }
 
+.emailForm button {
+  background-color: #2F4870;
+  border: none;
+  padding: 14px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.emailForm button:hover {
+    background-color: #4970AD;
+}
+
 .error {
   background: #fee2e2;
   color: #991b1b;
   padding: 0.75rem;
   border-radius: 4px;
   margin-bottom: 1rem;
-  width: 38%;
+  width: 100%;
 }
 
 .required {
@@ -234,87 +184,68 @@ body {
 .notes {
   margin-top: 5px;
   color: #575656;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
-@media (max-width: 600px) {
+/* For desktop */
+@media (min-width: 768px) {
 
-  /* Page layout */
   body {
-    align-items: flex-start;
-    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
   }
 
   .container {
-    padding: 20px;
+    max-width: 800px;
+    padding: 30px;
   }
 
   /* Headings */
   .header h1 {
-    font-size: 1.6rem;
-  }
-
-  .header h4 {
-    font-size: 1rem;
-    text-align: center;
-  }
- 
-  .userZip p {
-    margin-top: 10px;
+    font-size: 2.2rem;
   }
 
   /* Inputs should be full width */
-  .userName input,
-  .emailForm input,
-  .inputZip input {
-    width: 100%;
+  .userName input {
+    width: 60%;
   }
 
   /* ZIP + button stack vertically */
   .inputZip {
-    flex-direction: column;
-    gap: 8px;
+    display: block;
+    align-items: center;
+  }
+  
+  .inputZip input {
+    width: 25%;
   }
 
   .inputZip button {
-    width: 100%;
-    height: auto;
-    padding: 12px;
+    width: auto;
+    padding: 0 20px;
+    height: 39px;
   }
 
   /* Email + subject rows stack */
   .emailText,
   .subjectText {
-    flex-direction: column;
-    margin-bottom: 10px;
+    flex-direction: row;
   }
 
   .emailText textarea,
   .subjectText textarea {
-    width: 100%;
+    width: 90%;
   }
 
   /* Email body textarea */
   .templateText textarea {
-    height: 260px;
-    font-size: 1rem;
+    height: 500px;
   }
 
-  /* Buttons easier to tap */
-  button {
-    font-size: 1rem;
-    padding: 14px;
-  }
-
-  /* Error messages readable */
   .error {
-    width: 100%;
-  }
-
-  /* Notes */
-  .notes {
-    font-size: 0.75rem;
+    width: 38%;
   }
 }
-
