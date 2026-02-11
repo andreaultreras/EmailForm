@@ -112,17 +112,12 @@ lookUpBtn.addEventListener('click', async () => {
     toEmail.value = emailList.join(', ');
 
     // update the text in the template with names===
-    const userName = document.getElementById('name').value.trim();
-    let bodyTemplate = ORIGINAL_BODY_TEMPLATE;
-    let recipients = buildDear(nameList);
     
-    if (userName) {
-      bodyTemplate = bodyTemplate.replace('[UserName]', userName)
-    }
-    bodyTemplate = bodyTemplate.replace('[XXXX]', recipients);
+    // let bodyTemplate = ORIGINAL_BODY_TEMPLATE;
+    currentUserName = name;
+    currentRecipients = buildDear(nameList);
     
-    const bodyInput = document.getElementById('bodyText');
-    bodyInput.value = bodyTemplate;
+    updateTemplates(currentUserName, currentRecipients);
 
     // show the email form================
     document.querySelector(".emailForm").hidden = false;
@@ -144,3 +139,60 @@ document.getElementById('sendEmailBtn').addEventListener('click', () => {
   const mailtoLink = `mailto:${toEmails}?subject=${subject}&body=${body}`;
   window.location.href = mailtoLink;
 });
+
+// ========================================================
+// Language Toggle
+// ========================================================
+const toggleBtn = document.getElementById("toggleLang");
+let lang = "en";
+
+// Grab the template elements
+const bodyTemplates = {
+  en: document.getElementById("template-en").innerText.trim(),
+  es: document.getElementById("template-es").innerText.trim()
+};
+
+const subjectTemplates = {
+  en: document.getElementById("subject-en").innerText.trim(),
+  es: document.getElementById("subject-es").innerText.trim()
+};
+
+// DOM elements to update
+const templateBody = document.getElementById("bodyText");
+const subjectInput = document.getElementById("subjectInput");
+
+// Store current dynamic values
+let currentUserName = '';
+let currentRecipients = '';
+
+// Event listener=============================================
+toggleBtn.addEventListener("click", () => {
+  // Toggle language
+  lang = lang === "en" ? "es" : "en";
+  
+  // Update the toggle button label
+  toggleBtn.textContent = lang === "en" ? "Español" : "English";
+
+  // Update static page text if you have any
+  document.querySelectorAll(".lang-en").forEach(el => el.style.display = lang === "en" ? "inline" : "none");
+  document.querySelectorAll(".lang-es").forEach(el => el.style.display = lang === "es" ? "inline" : "none");
+
+  // Update textareas only if search has already been done
+  if (currentUserName || currentRecipients) {
+    updateTemplates(currentUserName, currentRecipients);
+  }
+});
+
+// ========================================================
+// Update the templates for current language
+// ========================================================
+function updateTemplates(userName = '', recipients = '') {
+  let bodyTemplate = bodyTemplates[lang];
+  let subjectTemplate = subjectTemplates[lang];
+
+  if (userName) bodyTemplate = bodyTemplate.replace('[UserName]', userName);
+  if (recipients) bodyTemplate = bodyTemplate.replace('[XXXX]', recipients);
+
+  templateBody.value = bodyTemplate;
+  subjectInput.value = subjectTemplate;
+}

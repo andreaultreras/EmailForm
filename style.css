@@ -20,6 +20,25 @@ body {
   width: 100%;
 }
 
+.toggle-container {
+  text-align: right;
+}
+
+#toggleLang {
+  background-color: white;
+  color: #2F4870;
+  border: 1px solid #2F4870;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#toggleLang:hover {
+  background-color: #2F4870;
+  color: white;
+}
+
 .header h1 {
   color: navy;
   padding: 10px 0;
